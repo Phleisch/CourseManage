@@ -1,4 +1,5 @@
 import time
+import sys
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from SurveyCrawler import CrawlSurveys
@@ -15,7 +16,8 @@ def CrawlDepartments(driver):
         search_box = driver.find_element_by_id('s_in_search_course_num')        #Use element to refresh instead of 'Search' button
         option = drop_down.find_elements_by_tag_name('option')[option_index]    #Get the 'option_index'-th department
         department = (option.text[:4])[1:]                                      #Unique three letter department identifier
-        print("\rCurrent department: " + department)
+        sys.stdout.write("\rCurrent department: " + department)
+        sys.stdout.flush()
         option.click()
         search_box.send_keys(Keys.ENTER)                                        #Refresh page after department selection
         CrawlSurveys(driver, department)
