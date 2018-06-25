@@ -12,6 +12,8 @@ def CrawlSurveys(driver, department):
             survey_text = survey.text.split(' ')
             if " " in department:
                 survey_department = (survey_text[len(survey_text) - 5]) + " " + survey_text[len(survey_text) - 4][:1]
+            elif len(department) is 2:
+                survey_department = (survey_text[len(survey_text) - 5])
             else: 
                 survey_department = (survey_text[len(survey_text) - 4])[:3]                     # Get department name
             if survey_department != department:

@@ -169,5 +169,4 @@ def ScrapeRatings(driver):
     csv_file.close()
     # print('Scraping ratings...')
     # Execute code needed to get
-    time.sleep(2)
     driver.execute_script("window.history.go(-1)")      # Go to previous page when done getting ratings

@@ -18,6 +18,7 @@ def CrawlDepartments(driver, start_dept, start_class):
         search_box = driver.find_element_by_id('s_in_search_course_num')        #Use element to refresh instead of 'Search' button
         option = drop_down.find_elements_by_tag_name('option')[option_index]    #Get the 'option_index'-th department
         department = (option.text[:4])[1:]                                      #Unique three letter department identifier
+        department = department.strip()
         sys.stdout.write("\rCurrent department: " + department)
         sys.stdout.flush()
         if found_start is False and (department == start_dept or start_dept == 'None'):
