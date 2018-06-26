@@ -69,20 +69,34 @@ def ScrapeRatings(driver):
     # Question 4: The tests/assignments were usually graded and returned promptly.
     q_4 = []
     q_4_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[5]/td")
-    q_4.append(q_4_data[1].text)                                                        # Strongly disagree
-    q_4.append(q_4_data[2].text)                                                        # Disagree
-    q_4.append(q_4_data[3].text)                                                        # Neutral
-    q_4.append(q_4_data[4].text)                                                        # Agree
-    q_4.append(q_4_data[5].text)                                                        # Strongly Agree
-    q_4.append(q_4_data[6].text)                                                        # Num respondents
-    q_4.append(q_4_data[7].text)                                                        # Avg rating
-    q_4.append(q_4_data[8].text)                                                        # Organization avg
-    q_4.append(q_4_data[9].text)                                                        # College avg
-    q_4.append(q_4_data[10].text)                                                       # University avg
+    index = 5
+    if "tests" in q_4_data[0].text:
+        q_4.append(q_4_data[1].text)                                                        # Strongly disagree
+        q_4.append(q_4_data[2].text)                                                        # Disagree
+        q_4.append(q_4_data[3].text)                                                        # Neutral
+        q_4.append(q_4_data[4].text)                                                        # Agree
+        q_4.append(q_4_data[5].text)                                                        # Strongly Agree
+        q_4.append(q_4_data[6].text)                                                        # Num respondents
+        q_4.append(q_4_data[7].text)                                                        # Avg rating
+        q_4.append(q_4_data[8].text)                                                        # Organization avg
+        q_4.append(q_4_data[9].text)                                                        # College avg
+        q_4.append(q_4_data[10].text)                                                       # University avg
+        index+=1
+    else:
+        q_4.append("N/A")                                                        # Strongly disagree
+        q_4.append("N/A")                                                        # Disagree
+        q_4.append("N/A")                                                        # Neutral
+        q_4.append("N/A")                                                        # Agree
+        q_4.append("N/A")                                                        # Strongly Agree
+        q_4.append("N/A")                                                        # Num respondents
+        q_4.append("N/A")                                                        # Avg rating
+        q_4.append("N/A")                                                        # Organization avg
+        q_4.append("N/A")                                                        # College avg
+        q_4.append("N/A")                                                       # University avg
 
     # Question 5: The instructor made me feel free to ask questions, disagree, and express my ideas.
     q_5 = []
-    q_5_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[6]/td")
+    q_5_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[{}]/td".format(index))
     q_5.append(q_5_data[1].text)                                                        # Strongly disagree
     q_5.append(q_5_data[2].text)                                                        # Disagree
     q_5.append(q_5_data[3].text)                                                        # Neutral
@@ -93,10 +107,11 @@ def ScrapeRatings(driver):
     q_5.append(q_5_data[8].text)                                                        # Organization avg
     q_5.append(q_5_data[9].text)                                                        # College avg
     q_5.append(q_5_data[10].text)                                                       # University avg
+    index+=1
 
     # Question 6: At this point in time, I feel that this course will be (or has already been) of value to me.
     q_6 = []
-    q_6_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[7]/td")
+    q_6_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[{}]/td".format(index))
     q_6.append(q_6_data[1].text)                                                        # Strongly disagree
     q_6.append(q_6_data[2].text)                                                        # Disagree
     q_6.append(q_6_data[3].text)                                                        # Neutral
