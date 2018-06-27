@@ -14,10 +14,10 @@ def CrawlSurveys(driver, department):
             if " " in department:
                 survey_department = (survey_text[len(survey_text) - 5]) + " " + survey_text[len(survey_text) - 4][:1]
                 class_name = survey_text[len(survey_text) - 4][:1]
-            elif len(department) is 2:
+            elif len(department) is 2 or 1:
                 survey_department = (survey_text[len(survey_text) - 5])
                 class_name = survey_text[len(survey_text) - 4]
-            else: 
+            else:
                 survey_department = (survey_text[len(survey_text) - 4])[:3]                     # Get department name
                 class_name = survey_text[len(survey_text) - 4][3:]
             if survey_department != department:
