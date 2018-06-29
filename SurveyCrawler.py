@@ -14,16 +14,17 @@ def CrawlSurveys(driver, department):
             if " " in department:
                 survey_department = (survey_text[len(survey_text) - 5]) + " " + survey_text[len(survey_text) - 4][:1]
                 class_name = survey_text[len(survey_text) - 4][1:]
-            elif len(department) is 2 or 1:
+            elif len(department) is 2 or len(department) is 1:
                 survey_department = (survey_text[len(survey_text) - 5])
                 class_name = survey_text[len(survey_text) - 4]
             else:
                 survey_department = (survey_text[len(survey_text) - 4])[:3]                     # Get department name
                 class_name = survey_text[len(survey_text) - 4][3:]
-            # print("Yours: " + survey_department + ", This: " + )
             if survey_department != department:
                 department_finished = True
                 break
+            sys.stdout.write("\r                                                            ")
+            sys.stdout.flush()
             sys.stdout.write("\rCurrent course: " + department + ", " + class_name)
             sys.stdout.flush()
             survey_link = survey.find_elements_by_tag_name('td')[0]                             # Element containing link
