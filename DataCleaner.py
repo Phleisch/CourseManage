@@ -5,7 +5,7 @@ import json
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-def scrape_ratings(driver):
+def ScrapeRatings(driver):
     with open('info.json.cfg') as f:    											    # Get the file for saving csv data
             cred = json.load(f)
     csv_file = open(cred['filename'], 'a', newline = '')
