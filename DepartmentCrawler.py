@@ -20,15 +20,15 @@ def crawl_departments(driver, start_dept, start_class, start_year, start_sem):
         department = (option.text[:4])[1:]                                      #Unique three letter department identifier
         department = department.strip()
 
-        if found_start is False and (department == start_dept or start_dept == 'None'):
+        if found_start is False and (department == start_dept or start_dept is None):
             found_start = True
-            needs_backspace = True
         
         if found_start is True:
             option.click()
             
-            if department == start_dept and start_class != 'None':
+            if department == start_dept and start_class is not None:
                 search_box.send_keys(start_class)
+                needs_backspace
             elif needs_backspace:
                 needs_backspace = False
                 
