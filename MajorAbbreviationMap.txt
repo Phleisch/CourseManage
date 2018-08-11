@@ -1,0 +1,231 @@
+ACC:Accounting
+ACF:!Mathematics
+ADV:Advertising
+ASE:Aerospace Engineering
+AFR:African and African Diaspora S
+AFS:Air Force Science
+ASL:American Sign Language
+AMS:American Studies
+AHC:Ancient History and Classical
+ANT:Anthropology
+ALD:Applied Learning and Devel
+ARA:Arabic
+ARE:Architectural Engineering
+ARI:Architectural Interior Design
+ARC:Architecture
+AED:Art Education
+ARH:Art History
+ART:Art, Studio
+AET:Arts and Entertainment Tech
+AAS:Asian American Studies
+ANS:Asian Studies
+AST:Astronomy
+BSN:Bassoon
+BEN:Bengali
+BCH:Biochemistry
+BIO:Biology
+BME:Biomedical Engineering
+BDP:Bridging Disciplines
+B A:Business Administration
+BGS:Business, Government, Society
+CAM:!Computation and Applied Mathematics
+CHE:Chemical Engineering
+CH:Chemistry
+CHI:Chinese
+C E:Civil Engineering
+CLA:Clarinet
+C C:Classical Civilization
+CGS:Cognitive Science
+CSD:Comm Sciences and Disorders
+COM:Communication
+CLD:Communication and Leadership
+CMS:Communication Studies
+CRP:Community &amp; Regional Planning
+C L:Comparative Literature
+COE:Computational Engineering
+CSE:Computational Sci, Eng, Math
+C S:Computer Science
+CON:Conducting
+CTI:Core Texts and Ideas
+CRW:Creative Writing
+EDC:Curriculum and Instruction
+CXS:!Freshman Seminar
+CZ:Czech
+DAN:Danish
+DES:Design
+DEV:Developmental Studies
+D B:Double Bass
+DRS:Drum Set
+DCH:Dutch
+ECO:Economics
+EDA:!Ed Admin
+ELP:Educational Leadership &amp; Policy
+EDP:Educational Psychology
+E E:Electrical Engineering
+EER:Energy and Earth Resources
+EMR:!Petroleum Engineering
+ENM:Engineering Management
+E M:Engineering Mechanics
+E S:Engineering Studies
+E:English
+ESL:English As A Second Language
+ENS:Ensemble
+EVE:Environmental Engineering
+EVS:Environmental Science
+EUP:Euphonium
+EUS:European Studies
+FIN:Finance
+F A:Fine Arts
+FLU:Flute
+FLE:Foreign Language Education
+FR:French
+F C:!French and Italian
+F S:!Freshman Seminar
+F H:French Horn
+G E:General Engineering
+GRC:!Germanic Studies
+GRG:Geography
+GEO:Geological Sciences
+GER:German
+GSD:German, Scandinavian, &amp; Dutch
+GOV:Government
+GRS:Graduate School
+GK:Greek
+GUI:Guitar
+HAR:Harp
+H E:!Human Ecology
+H S:Health and Society
+HED:Health Education
+HEB:Hebrew
+HIN:Hindi
+HIS:History
+HDF:Human Development &amp; Family Sci
+HDO:Human Dimensions of Orgs
+HMN:Humanities
+ILA:Iberian &amp; Lat Amer Langs &amp; Culs
+IMS:Identity Management and Security
+INF:Information Studies
+ITD:Integrated Design
+I B:International Business
+I D:!Architecture
+IRG:Intl Relations &amp; Global Studies
+ISL:Islamic Studies
+ITL:Italian
+ITC:Italian Civilization
+JPN:Japanese
+J S:Jewish Studies
+J:Journalism
+KIN:Kinesiology
+KOR:Korean
+LAR:Landscape Architecture
+LAT:Latin
+LAL:Latin Amer Langs, Indigenous
+LAS:Latin American Studies
+LAW:Law
+LEB:Legal Environment of Business
+L A:Liberal Arts
+LAH:Liberal Arts Honors
+LIN:Linguistics
+MAL:Malayalam
+MAN:Management
+MSC:!Information
+MIS:Management Information Systems
+MFG:Manufacturing Systems Engineer
+MNS:Marine Science
+MKT:Marketing
+MSE:Materials Science &amp; Engineering
+MST:!Mathematics
+M:Mathematics
+M E:Mechanical Engineering
+MDV:Medieval Studies
+MAS:Mexican American Studies
+MEL:Middle Eastern Langs &amp; Culs
+MES:Middle Eastern Studies
+M S:Military Science
+MOL:Molecular Biology
+MUS:Music
+NSC:Natural Sciences
+N S:Naval Science
+NEU:Neuroscience
+NOR:Norwegian
+N:Nursing
+NTR:Nutrition
+OBO:Oboe
+OPR:Opera
+O M:Operations Management
+ORI:Operations Research &amp; Ind Eng
+ORG:Organ
+PER:Percussion
+PRS:Persian
+PGE:Petroleum and Geosystems Engr
+PGS:Pharmacy Graduate Studies
+PHM:Pharmacy PharmD
+PHL:Philosophy
+PHR:!Pharmacy
+PHX:!Pharmacy
+PED:Physical Education
+P S:Physical Science
+PHY:Physics
+PIA:Piano
+POL:Polish
+POR:Portuguese
+PRC:Portuguese Civilization
+PSY:Psychology
+P A:Public Affairs
+PBH:Public Health
+P R:Public Relations
+PSF:Public Safety
+RTF:Radio-Television-Film
+R E:Real Estate
+R S:Religious Studies
+RHE:Rhetoric and Writing
+R M:Risk Management
+RUS:Russian
+REE:Russian, East Euro, &amp; Eurasian
+SAN:Sanskrit
+SAX:Saxophone
+SCA:!Germanic Studies
+SLA:!Slavice and Eurasian Studies
+SME:!Science and Math Engineering
+STC:Sci and Tech Commercialization
+STM:Sci, Tech, Engr &amp; Math Ed
+SCI:Science
+S C:Serbian/Croatian
+SEL:Slavic and Eurasian Languages
+S S:Social Science
+S W:Social Work
+SOC:Sociology
+SPN:Spanish
+SPC:Spanish Civilization
+SED:Special Education
+SSC:!Stats/Scientific Computation
+STA:Statistics
+STS:!Science, Technology Studies
+SDS:Statistics and Data Sciences
+SUS:Sustainability Studies
+SWE:Swedish
+TAM:Tamil
+TXA:Textiles and Apparel
+T D:Theatre and Dance
+TEL:!Middle Eastern Studies
+TRO:Trombone
+TRU:Trumpet
+TBA:Tuba
+TUR:Turkish
+T C:Tutorial Course
+UGS:Undergraduate Studies
+URB:Urban Studies
+URD:Urdu
+UTL:UTeach-Liberal Arts
+UTS:UTeach-Natural Sciences
+VIA:Viola
+VIO:Violin
+V C:Violoncello
+VAS:Visual Art Studies
+VOI:Voice
+VTN:!Asian Studies - Vietnam
+WGS:Women&#39;s and Gender Studies
+WCV:!Government
+WRT:Writing
+YID:Yiddish
+YOR:Yoruba
