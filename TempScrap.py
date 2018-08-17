@@ -24,13 +24,22 @@ def ScrapeRatings(driver):
     s_d.append(s_d_data[11].text[36:])                                               # Num distributed surveys
     s_d.append(s_d_data[13].text[33:])                                               # Num returned surveys
 
-def _get_header(driver):
+def _get_header(driver, major_abbr, course_num):
     header_data = driver.find_elements_by_xpath("//*[@class='details-box']//*")
-    instructor          = str(header_data[1].text).split(": ")[1]
-    course_info         = str(header_data[3].text).split(": ")[1]
-    organization        = str(header_data[5].text).split(": ")[1]
-    college             = str(header_data[7].text).split(": ")[1]
-    semester            = str(header_data[9].text).split(": ")[1]
-    surveys_distributed = str(header_data[11].text).split(": ")[1]
-    surveys_returned    = str(header_data[13].text).split(": ")[1]
-   
+    name            = str(header_data[1].text).split(": ")[1]
+    
+    course          = str(header_data[3].text).split(": ")[1]
+    major_abbr      = major_abbr
+    course_num      = course_num
+    unique_num      = course.split("(")[1][:5]
+
+    major           = str(header_data[5].text).split(": ")[1]
+    college         = str(header_data[7].text).split(": ")[1]
+
+    occurrence      = str(header_data[9].text).split(": ")[1].split(" ")
+    semester        = occurrence[0]
+    year            = occurrence[1]
+
+
+    num_distributed = str(header_data[11].text).split(": ")[1]
+    num_returned    = str(header_data[13].text).split(": ")[1]
