@@ -40,147 +40,55 @@ def _get_header(driver, major_abbr, course_num):
     return header_data
 
 def scrape_ratings(driver, major_abbr, course_num):
-    with open('info.json.cfg') as f:    											    # Get the file for saving csv data
+    with open('info.json.cfg') as f:
             cred = json.load(f)
     csv_file = open(cred['filename'], 'a', newline = '')
     writer = csv.writer(csv_file)
     
     # Data collection section
-
     data = _get_header(driver, major_abbr, course_num)
+    print()
 
-    # Question 1: The course was well organized
-    q_1_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[2]/td")
-    data.append(q_1_data[1].text)                                                        # Strongly disagree
-    data.append(q_1_data[2].text)                                                        # Disagree
-    data.append(q_1_data[3].text)                                                        # Neutral
-    data.append(q_1_data[4].text)                                                        # Agree
-    data.append(q_1_data[5].text)                                                        # Strongly agree
-    data.append(q_1_data[6].text)                                                        # Num respondents
-    data.append(q_1_data[7].text)                                                        # Avg rating
-    data.append(q_1_data[8].text)                                                        # Organization avg
-    data.append(q_1_data[9].text)                                                        # College avg
-    data.append(q_1_data[10].text)                                                       # University avg
+    columns = list()
+    
+    for table_index in range(1,4):
+        driver.refresh()
+        row_index = 2
+        xpath = str.format("//table[{}]/tbody/tr[{}]/td", table_index, row_index)
+        curr_data = driver.find_elements_by_xpath(xpath)
+        while len(curr_data) is not 0:
+            columns.append(curr_data)
+            row_index += 1
+            xpath = str.format("//table[{}]/tbody/tr[{}]/td", table_index, row_index)
+            print(xpath)
+            curr_data = driver.find_elements_by_xpath(xpath)
 
-    # Question 2: The instructor communicated information effectively
-    q_2_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[3]/td")
-    data.append(q_2_data[1].text)                                                        # Strongly disagree
-    data.append(q_2_data[2].text)                                                        # Disagree
-    data.append(q_2_data[3].text)                                                        # Neutral
-    data.append(q_2_data[4].text)                                                        # Agree
-    data.append(q_2_data[5].text)                                                        # Strongly Agree
-    data.append(q_2_data[6].text)                                                        # Num respondents
-    data.append(q_2_data[7].text)                                                        # Avg rating
-    data.append(q_2_data[8].text)                                                        # Organization avg
-    data.append(q_2_data[9].text)                                                        # College avg
-    data.append(q_2_data[10].text)                                                       # University avg
+    print("That worked")
+    sys.exit()
 
-    # Question 3: The instructor showed interest in the progress of students.
-    q_3_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[4]/td")
-    data.append(q_3_data[1].text)                                                        # Strongly disagree
-    data.append(q_3_data[2].text)                                                        # Disagree
-    data.append(q_3_data[3].text)                                                        # Neutral
-    data.append(q_3_data[4].text)                                                        # Agree
-    data.append(q_3_data[5].text)                                                        # Strongly Agree
-    data.append(q_3_data[6].text)                                                        # Num respondents
-    data.append(q_3_data[7].text)                                                        # Avg rating
-    data.append(q_3_data[8].text)                                                        # Organization avg
-    data.append(q_3_data[9].text)                                                        # College avg
-    data.append(q_3_data[10].text)                                                       # University avg
+    table_index = 1
+    while table_index < 4:
+        row_index = 2
+        xpath = str.format("//table[{}]/tbody/tr[{}]/td", table_index, row_index)
+        
+        try:
+            curr_data = driver.find_elements_by_xpath(xpath)
+        except Exception as ex:
+            template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+            message = template.format(type(ex).__name__, ex.args)
+            print(message)
+            sys.exit()
 
-    # Question 4: The tests/assignments were usually graded and returned promptly.
-    q_4_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[5]/td")
-    index = 5
-    if "tests" in q_4_data[0].text:
-        data.append(q_4_data[1].text)                                                        # Strongly disagree
-        data.append(q_4_data[2].text)                                                        # Disagree
-        data.append(q_4_data[3].text)                                                        # Neutral
-        data.append(q_4_data[4].text)                                                        # Agree
-        data.append(q_4_data[5].text)                                                        # Strongly Agree
-        data.append(q_4_data[6].text)                                                        # Num respondents
-        data.append(q_4_data[7].text)                                                        # Avg rating
-        data.append(q_4_data[8].text)                                                        # Organization avg
-        data.append(q_4_data[9].text)                                                        # College avg
-        data.append(q_4_data[10].text)                                                       # University avg
-        index+=1
-    else:
-        data.append("N/A")                                                        # Strongly disagree
-        data.append("N/A")                                                        # Disagree
-        data.append("N/A")                                                        # Neutral
-        data.append("N/A")                                                        # Agree
-        data.append("N/A")                                                        # Strongly Agree
-        data.append("N/A")                                                        # Num respondents
-        data.append("N/A")                                                        # Avg rating
-        data.append("N/A")                                                        # Organization avg
-        data.append("N/A")                                                        # College avg
-        data.append("N/A")                                                       # University avg
-
-    # Question 5: The instructor made me feel free to ask questions, disagree, and express my ideas.
-    q_5_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[{}]/td".format(index))
-    data.append(q_5_data[1].text)                                                        # Strongly disagree
-    data.append(q_5_data[2].text)                                                        # Disagree
-    data.append(q_5_data[3].text)                                                        # Neutral
-    data.append(q_5_data[4].text)                                                        # Agree
-    data.append(q_5_data[5].text)                                                        # Strongly Agree
-    data.append(q_5_data[6].text)                                                        # Num respondents
-    data.append(q_5_data[7].text)                                                        # Avg rating
-    data.append(q_5_data[8].text)                                                        # Organization avg
-    data.append(q_5_data[9].text)                                                        # College avg
-    data.append(q_5_data[10].text)                                                       # University avg
-    index+=1
-
-    # Question 6: At this point in time, I feel that this course will be (or has already been) of value to me.
-    q_6_data = driver.find_elements_by_xpath("//table[1]/tbody/tr[{}]/td".format(index))
-    data.append(q_6_data[1].text)                                                        # Strongly disagree
-    data.append(q_6_data[2].text)                                                        # Disagree
-    data.append(q_6_data[3].text)                                                        # Neutral
-    data.append(q_6_data[4].text)                                                        # Agree
-    data.append(q_6_data[5].text)                                                        # Strongly Agree
-    data.append(q_6_data[6].text)                                                        # Num respondents
-    data.append(q_6_data[7].text)                                                        # Avg rating
-    data.append(q_6_data[8].text)                                                        # Organization avg
-    data.append(q_6_data[9].text)                                                        # College avg
-    data.append(q_6_data[10].text)                                                       # University avg
-
-    # Question 7: Overall, this instructor was...
-    q_7_data = driver.find_elements_by_xpath("//table[2]/tbody/tr[2]/td")
-    data.append(q_7_data[1].text)                                                        # Strongly disagree
-    data.append(q_7_data[2].text)                                                        # Disagree
-    data.append(q_7_data[3].text)                                                        # Neutral
-    data.append(q_7_data[4].text)                                                        # Agree
-    data.append(q_7_data[5].text)                                                        # Strongly Agree
-    data.append(q_7_data[6].text)                                                        # Num respondents
-    data.append(q_7_data[7].text)                                                        # Avg rating
-    data.append(q_7_data[8].text)                                                        # Organization avg
-    data.append(q_7_data[9].text)                                                        # College avg
-    data.append(q_7_data[10].text)                                                       # University avg
-
-    # Question 8: Overall, this course was...
-    q_8_data = driver.find_elements_by_xpath("//table[2]/tbody/tr[3]/td")
-    data.append(q_8_data[1].text)                                                        # Strongly disagree
-    data.append(q_8_data[2].text)                                                        # Disagree
-    data.append(q_8_data[3].text)                                                        # Neutral
-    data.append(q_8_data[4].text)                                                        # Agree
-    data.append(q_8_data[5].text)                                                        # Strongly Agree
-    data.append(q_8_data[6].text)                                                        # Num respondents
-    data.append(q_8_data[7].text)                                                        # Avg rating
-    data.append(q_8_data[8].text)                                                        # Organization avg
-    data.append(q_8_data[9].text)                                                        # College avg
-    data.append(q_8_data[10].text)                                                       # University avg
-
-    # Question 9: In my opinion, the workload in this course was...
-    q_9_data = driver.find_elements_by_xpath("//table[3]/tbody/tr[2]/td")
-    data.append(q_9_data[1].text)                                                        # Strongly disagree
-    data.append(q_9_data[2].text)                                                        # Disagree
-    data.append(q_9_data[3].text)                                                        # Neutral
-    data.append(q_9_data[4].text)                                                        # Agree
-    data.append(q_9_data[5].text)                                                        # Strongly Agree
-    data.append(q_9_data[6].text)                                                        # Num respondents
-    data.append(q_9_data[7].text)                                                        # Avg rating
-    data.append(q_9_data[8].text)                                                        # Organization avg
-    data.append(q_9_data[9].text)                                                        # College avg
-    data.append(q_9_data[10].text)                                                       # University avg
+        print("Here 4")
+        while len(curr_data) is not 0:
+            for elem_index in range(1,11):
+                data.append(curr_data[elem_index].text)
+            row_index += 1
+            xpath = str.format("//table[{}]/tbody/tr[{}]/td", table_index, row_index)
+            print(xpath)
+            curr_data = driver.find_elements_by_xpath(xpath)
+        table_index += 1
 
     writer.writerow(data)
     csv_file.close()
-    driver.execute_script("window.history.go(-1)")      # Go to previous page when done getting ratings
+    driver.execute_script("window.history.go(-1)")
