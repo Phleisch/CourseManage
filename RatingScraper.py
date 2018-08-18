@@ -1,9 +1,6 @@
-import time
 import csv
-import sys
 import json
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 
 def _get_header(driver, major_abbr, course_num):
     header_data = list()
@@ -42,52 +39,21 @@ def _get_header(driver, major_abbr, course_num):
 def scrape_ratings(driver, major_abbr, course_num):
     with open('info.json.cfg') as f:
             cred = json.load(f)
+    
     csv_file = open(cred['filename'], 'a', newline = '')
     writer = csv.writer(csv_file)
     
     # Data collection section
     data = _get_header(driver, major_abbr, course_num)
-    print()
+    tables = driver.find_elements_by_xpath("//table")
 
-    columns = list()
-    
-    for table_index in range(1,4):
-        driver.refresh()
-        row_index = 2
-        xpath = str.format("//table[{}]/tbody/tr[{}]/td", table_index, row_index)
-        curr_data = driver.find_elements_by_xpath(xpath)
-        while len(curr_data) is not 0:
-            columns.append(curr_data)
-            row_index += 1
-            xpath = str.format("//table[{}]/tbody/tr[{}]/td", table_index, row_index)
-            print(xpath)
-            curr_data = driver.find_elements_by_xpath(xpath)
-
-    print("That worked")
-    sys.exit()
-
-    table_index = 1
-    while table_index < 4:
-        row_index = 2
-        xpath = str.format("//table[{}]/tbody/tr[{}]/td", table_index, row_index)
-        
-        try:
-            curr_data = driver.find_elements_by_xpath(xpath)
-        except Exception as ex:
-            template = "An exception of type {0} occurred. Arguments:\n{1!r}"
-            message = template.format(type(ex).__name__, ex.args)
-            print(message)
-            sys.exit()
-
-        print("Here 4")
-        while len(curr_data) is not 0:
+    for table in tables:
+        num_elems = len(table.find_elements_by_xpath("tbody/tr"))
+        for row_index in range(2,num_elems+1):
+            xpath = "tbody/tr[{}]/td".format(row_index)
+            curr_row = table.find_elements_by_xpath(xpath)
             for elem_index in range(1,11):
-                data.append(curr_data[elem_index].text)
-            row_index += 1
-            xpath = str.format("//table[{}]/tbody/tr[{}]/td", table_index, row_index)
-            print(xpath)
-            curr_data = driver.find_elements_by_xpath(xpath)
-        table_index += 1
+                data.append(curr_row[elem_index].text)
 
     writer.writerow(data)
     csv_file.close()
