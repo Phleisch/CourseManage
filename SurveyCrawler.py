@@ -49,7 +49,7 @@ def crawl_surveys(driver, department, start_year, start_sem):
             survey_link = survey_elements[0]             # Element containing link
             time.sleep(2)
             survey_link.find_elements_by_tag_name('a')[0].click()               # Click actual link
-            scrape_ratings(driver)
+            scrape_ratings(driver, department, class_name)
 
         if department_finished is False:
             next_page = driver.find_element_by_xpath("//*[@class='page-forward']//*//*[8]")     # Get next page button by xpath
