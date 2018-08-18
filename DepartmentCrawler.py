@@ -35,6 +35,6 @@ def crawl_departments(driver, start_dept, start_class, start_year, start_sem):
                 for x in range(len(start_class)):
                     search_box.send_keys(Keys.BACK_SPACE)
             
-            time.sleep(2)
+            time.sleep(1)
             search_box.send_keys(Keys.ENTER)                                    #Refresh page after department selection
             crawl_surveys(driver, department, start_year, start_sem)
