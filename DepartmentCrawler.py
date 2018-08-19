@@ -28,7 +28,7 @@ def crawl_departments(driver, start_dept, start_class, start_year, start_sem):
             
             if department == start_dept and start_class is not None:
                 search_box.send_keys(start_class)
-                needs_backspace
+                needs_backspace = True
             elif needs_backspace:
                 needs_backspace = False
                 

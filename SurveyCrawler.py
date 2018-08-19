@@ -28,10 +28,7 @@ def crawl_surveys(driver, department, start_year, start_sem):
             if survey_time[0] < start_sem and survey_time[1] == int(start_year):
                 continue
 
-            if " " in department:
-                survey_department = survey_class[:3]
-                class_name = survey_class[3:]
-            elif len(department) is 2 or len(department) is 1:
+            if len(department) is 2 or len(department) is 1:
                 survey_department = survey_class.split(" ")[0]
                 class_name = survey_class.split(" ")[1]
             else:
