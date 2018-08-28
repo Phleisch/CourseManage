@@ -23,17 +23,15 @@ def crawl_surveys(driver, department, start_year, start_sem):
             survey_time[0] = SEMESTER_MAPPER.get(survey_time[0], 0)
             survey_time[1] = int(survey_time[1])
             
+            survey_department  = _get_department(survey_class)
+            class_name = survey_class.strip(survey_department).strip()
+            print(survey_department)
+            print(class_name)
+
             if survey_time[1] < int(start_year):
                 continue
             if survey_time[0] < start_sem and survey_time[1] == int(start_year):
                 continue
-
-            if len(department) is 2 or len(department) is 1:
-                survey_department = survey_class.split(" ")[0]
-                class_name = survey_class.split(" ")[1]
-            else:
-                survey_department = survey_class[:3]
-                class_name = survey_class[3:]
 
             if survey_department != department:
                 department_finished = True
@@ -52,3 +50,15 @@ def crawl_surveys(driver, department, start_year, start_sem):
             next_page = driver.find_element_by_xpath("//*[@class='page-forward']//*//*[8]")     # Get next page button by xpath
             time.sleep(1)
             next_page.send_keys(Keys.ENTER)                                                     # Go to the next page of surveys
+
+def _get_department(class_name):
+    department = ''
+
+    for letter in class_name:
+        if not letter.isdigit():
+            department += letter
+        else:
+            break
+    
+    department = department.strip()
+    return department
