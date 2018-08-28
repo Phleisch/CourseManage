@@ -25,8 +25,6 @@ def crawl_surveys(driver, department, start_year, start_sem):
             
             survey_department  = _get_department(survey_class)
             class_name = survey_class.strip(survey_department).strip()
-            print(survey_department)
-            print(class_name)
 
             if survey_time[1] < int(start_year):
                 continue
